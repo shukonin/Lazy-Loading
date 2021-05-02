@@ -49,14 +49,24 @@ button:hover {
   color: #4a3cde;
 }
 
+/* Images */
+#images-container {
+  margin-bottom: 6rem;
+}
+
+#images-container img {
+  width: 320px;
+}
+
 /* Footer */
 footer {
   color: gray;
-  position: absolute;
+  background-color: whitesmoke;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 footer a {
