@@ -98,3 +98,17 @@ footer a:hover {
 .footer-reference {
   font-size: 0.7rem;
 }
+
+@media screen and (max-width: 500px) {
+  #title {
+    font-size: 1.5rem;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+  }
+
+  .footer-personal {
+    font-size: 0.7rem;
+  }
+}
