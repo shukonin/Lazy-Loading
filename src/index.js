@@ -25,10 +25,12 @@ const randomIndex = () => {
 // Create an observer for images in viewport
 const printImageIntersected = (entries) => {
   if (entries[0].isIntersecting) {
-    entries[0].target.src = entries[0].target.dataset.src;
+    entries[0].target.firstChild.src = entries[0].target.firstChild.dataset.src;
     removeObserverTarget(entries[0].target);
+    setTimeout(() => {
+      entries[0].target.classList.add('off');
+    }, 1000);
   }
-  // console.log('hola');
 };
 
 const observer = new IntersectionObserver(printImageIntersected);
@@ -48,7 +50,7 @@ const insertImage = () => {
   image.dataset.src = `${API}${randomIndex()}.jpg`;
   figure.appendChild(image);
   imagesContainer.append(figure);
-  addNewObserverTarget(image);
+  addNewObserverTarget(figure);
 };
 
 const removeImage = () => {

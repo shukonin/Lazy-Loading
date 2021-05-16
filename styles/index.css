@@ -54,8 +54,21 @@ button:hover {
   margin-bottom: 6rem;
 }
 
-#images-container img {
+#images-container figure {
+  margin: 1rem auto;
   width: 320px;
+  min-height: 100px;
+  border-radius: 1rem;
+  background-color: lightgray;
+}
+
+#images-container .off {
+  background-color: transparent;
+}
+
+#images-container img {
+  width: inherit;
+  border-radius: inherit;
 }
 
 /* Footer */
