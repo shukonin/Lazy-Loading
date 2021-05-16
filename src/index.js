@@ -3,6 +3,8 @@ const API = 'https://randomfox.ca/images/';
 const addButton = document.getElementById('add-button');
 const cleanButton = document.getElementById('clean-button');
 const imagesContainer = document.getElementById('images-container');
+let imagesInserted = 0;
+let imagesLoaded = 0;
 const prevIndex = [];
 
 // Create a random index that hasn't been used before
@@ -23,10 +25,15 @@ const randomIndex = () => {
 };
 
 // Create an observer for images in viewport
+
 const printImageIntersected = (entries) => {
   if (entries[0].isIntersecting) {
     entries[0].target.firstChild.src = entries[0].target.firstChild.dataset.src;
     removeObserverTarget(entries[0].target);
+    imagesLoaded++;
+    printReport();
+    
+    // Sets background transparent
     setTimeout(() => {
       entries[0].target.classList.add('off');
     }, 1000);
@@ -43,7 +50,7 @@ const removeObserverTarget = (target) => {
   observer.unobserve(target);
 };
 
-//Insert and removes images in the DOM
+//Insert and remove images in the DOM
 const insertImage = () => {
   const figure = document.createElement('figure');
   const image = document.createElement('img');
@@ -51,12 +58,21 @@ const insertImage = () => {
   figure.appendChild(image);
   imagesContainer.append(figure);
   addNewObserverTarget(figure);
+  imagesInserted++;
+  printReport();
 };
 
 const removeImage = () => {
   while (imagesContainer.childElementCount > 0) {
     imagesContainer.removeChild(imagesContainer.lastChild);
   }
+};
+
+// Print a report of images inserted and loaded
+const printReport = () => {
+  console.log(`🟣 Images inserted: ${imagesInserted}`);
+  console.log(`⚪ Images loaded: ${imagesLoaded}`);
+  console.log('---------------------------------');
 };
 
 // Event listeners for the buttons that load/removes images
