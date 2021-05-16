@@ -32,7 +32,7 @@ const printImageIntersected = (entries) => {
     removeObserverTarget(entries[0].target);
     imagesLoaded++;
     printReport();
-    
+
     // Sets background transparent
     setTimeout(() => {
       entries[0].target.classList.add('off');
@@ -62,10 +62,13 @@ const insertImage = () => {
   printReport();
 };
 
-const removeImage = () => {
+const removeImages = () => {
   while (imagesContainer.childElementCount > 0) {
     imagesContainer.removeChild(imagesContainer.lastChild);
   }
+  imagesInserted = 0;
+  imagesLoaded = 0;
+  printReport();
 };
 
 // Print a report of images inserted and loaded
@@ -77,4 +80,4 @@ const printReport = () => {
 
 // Event listeners for the buttons that load/removes images
 addButton.addEventListener('click', insertImage);
-cleanButton.addEventListener('click', removeImage);
+cleanButton.addEventListener('click', removeImages);
